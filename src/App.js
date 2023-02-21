@@ -1,19 +1,30 @@
 import React from "react";
+
+//import module
 import { createGlobalStyle } from "styled-components";
+
+// import componetns
 import TodoTemplate from "./components/TodoTemplate";
+import TodoHead from "./components/TodoHead";
+import TodoList from "./components/TodoList";
+import TodoCreate from "./components/TodoCreate";
 
 const GlobalStyle = createGlobalStyle`
   body {
     background: #e9ecef;
-  
   }
+  
 `;
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <TodoTemplate>안녕하세요</TodoTemplate>
+      <TodoTemplate>
+        <TodoHead />
+        <TodoList />
+        <TodoCreate />
+      </TodoTemplate>
     </>
   );
 }
