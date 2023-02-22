@@ -1,7 +1,8 @@
 import React from "react";
 
-//import module
+// import module
 import styled from "styled-components";
+import { useTodoState } from "../hooks/TodoContext";
 
 const TodoHeadContainer = styled.div`
   padding-top: 48px;
@@ -55,11 +56,18 @@ const renderDay = () => {
 };
 
 function TodoHead() {
+  const todos = useTodoState();
+  const undoneTasks = todos.filter((todo) => !todo.done);
+  // console.log(todos);
+  // console.log(undoneTasks);
+
   return (
     <TodoHeadContainer>
       <h1>{renderDate()}</h1>
       <div className="day">{renderDay()}</div>
-      <div className="tasks-left">할 일이 2개 남았습니다.</div>
+      <div className="tasks-left">
+        할 일이 {undoneTasks.length}개 남았습니다.
+      </div>
     </TodoHeadContainer>
   );
 }
