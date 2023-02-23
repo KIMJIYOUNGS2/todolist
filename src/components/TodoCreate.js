@@ -76,6 +76,7 @@ const Input = styled.input`
   outline: none;
   font-size: 18px;
   box-sizing: border-box;
+  font-family: Pretendard-Medium, sans-serif, Arial;
 `;
 
 function TodoCreate() {

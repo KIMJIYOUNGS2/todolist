@@ -2,11 +2,23 @@ import React from "react";
 
 // import module
 import styled, { css } from "styled-components";
-import { MdDone, MdDelete } from "react-icons/md";
+import { MdDone, MdDelete, BsFillEraserFill } from "react-icons/md";
 
 // import components
 import { useTodoDispatch } from "../hooks/TodoContext";
 
+const Edit = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dee2e6;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0;
+  &:hover {
+    color: #ff6b6b;
+  }
+`;
 const Remove = styled.div`
   display: flex;
   align-items: center;
@@ -21,7 +33,7 @@ const Remove = styled.div`
 `;
 
 // TodoItemContainer 위에 커서가 있을 때, Remove 컴포넌트를 보여주도록
-const TodoItemBlock = styled.div`
+const TodoItemContainer = styled.div`
   display: flex;
   align-items: center;
   padding-top: 12px;
@@ -53,6 +65,7 @@ const CheckCircle = styled.div`
 `;
 
 const Text = styled.div`
+  font-family: Pretendard-Medium, sans-serif, Arial;
   flex: 1;
   font-size: 21px;
   color: #495057;
@@ -68,7 +81,7 @@ function TodoItem({ id, done, text }) {
   const onToggle = () => dispatch({ type: "TOGGLE", id });
   const onRemove = () => dispatch({ type: "REMOVE", id });
   return (
-    <TodoItemBlock>
+    <TodoItemContainer>
       <CheckCircle done={done} onClick={onToggle}>
         {done && <MdDone />}
       </CheckCircle>
@@ -76,7 +89,7 @@ function TodoItem({ id, done, text }) {
       <Remove onClick={onRemove}>
         <MdDelete />
       </Remove>
-    </TodoItemBlock>
+    </TodoItemContainer>
   );
 }
 
